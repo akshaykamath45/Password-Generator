@@ -7,9 +7,9 @@ export default function App() {
     { title: "Include Uppercase Letters", state: false },
     { title: "Include Lowercase Letters", state: false },
     { title: "Include Numbers", state: false },
-    { title: "Include Symbols", state: false }
+    { title: "Include Symbols", state: false },
   ]);
-
+  const [copied, setCopied] = useState(false);
   const { password, errorMessage, generatePassword } = usePasswordGenerator();
 
   const handleCheckboxChange = (i) => {
@@ -17,16 +17,26 @@ export default function App() {
     updatedCheckboxData[i].state = !updatedCheckboxData[i].state;
     setCheckboxData(updatedCheckboxData);
   };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(password);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  };
   return (
     <div className="container">
       {/* Password Text and Copy */}
-      <div className="header">
-        {password && <div className="title">{password}</div>}
+      {password && (
+        <div className="header">
+          <div className="title">{password}</div>
+          <button onClick={handleCopy} className="copyBtn">
+            {copied ? "Copied" : "Copy"}
+          </button>
+        </div>
+      )}
 
-        <button onClick={() => {}} className="copyBtn">
-          Copy
-        </button>
-      </div>
       {/* Character Length */}
       <div className="charLength">
         <span>
