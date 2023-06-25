@@ -1,5 +1,6 @@
 import "./styles.css";
 import { useState } from "react";
+import { usePasswordGenerator } from "./customHook/usePasswordGenerator";
 export default function App() {
   const [length, setLength] = useState(4);
   const [checkboxData, setCheckboxData] = useState([
@@ -8,6 +9,8 @@ export default function App() {
     { title: "Include Numbers", state: false },
     { title: "Include Symbols", state: false }
   ]);
+
+  const { password, errorMessage, generatePassword } = usePasswordGenerator();
 
   const handleCheckboxChange = (i) => {
     const updatedCheckboxData = [...checkboxData];
@@ -18,7 +21,8 @@ export default function App() {
     <div className="container">
       {/* Password Text and Copy */}
       <div className="header">
-        <div className="title">r2139j4e1nk</div>
+        {password && <div className="title">{password}</div>}
+
         <button onClick={() => {}} className="copyBtn">
           Copy
         </button>
@@ -53,8 +57,14 @@ export default function App() {
         })}
       </div>
       {/* Strength */}
+
+      {/* Error Handling */}
+      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
       {/* Generate Button */}
-      <button className="generateBtn" onClick={() => {}}>
+      <button
+        className="generateBtn"
+        onClick={() => generatePassword(checkboxData, length)}
+      >
         Generate Password
       </button>
     </div>
