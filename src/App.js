@@ -1,6 +1,8 @@
 import "./styles.css";
 import { useState } from "react";
 import { usePasswordGenerator } from "./customHook/usePasswordGenerator";
+import { PasswordStrengthIndicator } from "./components/StrengthChecker";
+
 export default function App() {
   const [length, setLength] = useState(4);
   const [checkboxData, setCheckboxData] = useState([
@@ -67,7 +69,7 @@ export default function App() {
         })}
       </div>
       {/* Strength */}
-
+      <PasswordStrengthIndicator password={password} />
       {/* Error Handling */}
       {errorMessage && <div className="errorMessage">{errorMessage}</div>}
       {/* Generate Button */}
