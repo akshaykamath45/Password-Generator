@@ -6,8 +6,14 @@ export default function App() {
     { title: "Include Uppercase Letters", state: false },
     { title: "Include Lowercase Letters", state: false },
     { title: "Include Numbers", state: false },
-    { title: "Include Symbols", state: false },
+    { title: "Include Symbols", state: false }
   ]);
+
+  const handleCheckboxChange = (i) => {
+    const updatedCheckboxData = [...checkboxData];
+    updatedCheckboxData[i].state = !updatedCheckboxData[i].state;
+    setCheckboxData(updatedCheckboxData);
+  };
   return (
     <div className="container">
       {/* Password Text and Copy */}
@@ -36,7 +42,11 @@ export default function App() {
         {checkboxData.map((checkbox, index) => {
           return (
             <div key={index}>
-              <input type="checkbox" checked={checkbox.state} />
+              <input
+                type="checkbox"
+                checked={checkbox.state}
+                onChange={() => handleCheckboxChange(index)}
+              />
               <label>{checkbox.title}</label>
             </div>
           );
