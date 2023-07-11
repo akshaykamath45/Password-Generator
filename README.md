@@ -9,6 +9,7 @@ This is a password generator project built with React. It allows you to generate
 - Password strength indicator: The generated password is evaluated and its strength is displayed using a color-coded indicator.It is checked based on the cahracter-count.More the character-count,it will be very strong,otherwise vice-versa.
 - Copy to clipboard: You can easily copy the generated password to your clipboard with a single click.
 
-![image](https://github.com/akshaykamath45/Password-Generator/assets/73344382/a27268f5-ca8d-4e81-9638-7e962bfa6bc7)
+![image](https://github.com/akshaykamath45/Password-Generator/assets/73344382/5a876e39-6d13-470f-9666-745ed7eeffbf)
+
 
 
